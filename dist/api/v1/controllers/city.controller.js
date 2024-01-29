@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getWards = exports.getDistrict = exports.getCity = exports.index = void 0;
+exports.getWards = exports.getWardsAll = exports.getDistrict = exports.getDistrictAll = exports.getCity = exports.index = void 0;
 const cityProvider = require("../../../data/tinh_tp.json");
 const district = require("../../../data/quan_huyen.json");
 const wards = require("../../../data/xa_phuong.json");
@@ -72,6 +72,25 @@ const getCity = function (req, res) {
     });
 };
 exports.getCity = getCity;
+const getDistrictAll = function (req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const dataArrayDistrict = Object.keys(district).map((key) => district[key]);
+            dataArrayDistrict.sort((a, b) => parseInt(a.code) - parseInt(b.code));
+            res.status(200).json({
+                data: dataArrayDistrict,
+                code: 200,
+            });
+        }
+        catch (error) {
+            res.status(500).json({
+                code: 500,
+                message: "Something went wrong",
+            });
+        }
+    });
+};
+exports.getDistrictAll = getDistrictAll;
 const getDistrict = function (req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -98,6 +117,25 @@ const getDistrict = function (req, res) {
     });
 };
 exports.getDistrict = getDistrict;
+const getWardsAll = function (req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const dataArrayWards = Object.keys(wards).map((key) => wards[key]);
+            dataArrayWards.sort((a, b) => parseInt(a.code) - parseInt(b.code));
+            res.status(200).json({
+                data: dataArrayWards,
+                code: 200,
+            });
+        }
+        catch (error) {
+            res.status(500).json({
+                code: 500,
+                message: "Something went wrong",
+            });
+        }
+    });
+};
+exports.getWardsAll = getWardsAll;
 const getWards = function (req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {

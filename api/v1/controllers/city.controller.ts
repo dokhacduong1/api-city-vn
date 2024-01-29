@@ -85,7 +85,32 @@ export const getCity = async function (
   }
 };
 
-// [GET] /api/v1/duongits/district/{code}
+// [GET] /api/v1/duongits/district/
+export const getDistrictAll = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    // Chuyển đổi đối tượng thành mảng
+    const dataArrayDistrict = Object.keys(district).map(
+      (key) => district[key]
+    );
+
+    // Sắp xếp mảng theo thuộc tính 'code'
+    dataArrayDistrict.sort((a, b) => parseInt(a.code) - parseInt(b.code));
+    res.status(200).json({
+      data: dataArrayDistrict,
+      code: 200,
+    });
+  } catch (error) {
+    res.status(500).json({
+      code: 500,
+      message: "Something went wrong",
+    });
+  }
+};
+
+// [GET] /api/v1/duongits/district/{codeCity}
 export const getDistrict = async function (
   req: Request,
   res: Response
@@ -114,7 +139,32 @@ export const getDistrict = async function (
   }
 };
 
-// [GET] /api/v1/duongits/wards/{code}
+// [GET] /api/v1/duongits/wards/
+export const getWardsAll = async function (
+  req: Request,
+  res: Response
+): Promise<void> {
+  try {
+    // Chuyển đổi đối tượng thành mảng
+    const dataArrayWards = Object.keys(wards).map(
+      (key) => wards[key]
+    );
+
+    // Sắp xếp mảng theo thuộc tính 'code'
+    dataArrayWards.sort((a, b) => parseInt(a.code) - parseInt(b.code));
+    res.status(200).json({
+      data: dataArrayWards,
+      code: 200,
+    });
+  } catch (error) {
+    res.status(500).json({
+      code: 500,
+      message: "Something went wrong",
+    });
+  }
+};
+
+// [GET] /api/v1/duongits/wards/{codeDistrict}
 export const getWards = async function (
   req: Request,
   res: Response

@@ -29,6 +29,8 @@ const controller = __importStar(require("../controllers/city.controller"));
 const router = (0, express_1.Router)();
 router.get("/", controller.index);
 router.get("/city", controller.getCity);
+router.get("/district/", controller.getDistrictAll);
 router.get("/district/:code", controller.getDistrict);
+router.get("/ward", controller.getWardsAll);
 router.get("/ward/:code", controller.getWards);
 exports.cityRoutes = router;
