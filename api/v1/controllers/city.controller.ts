@@ -40,7 +40,7 @@ export const index = async function (
       return acc;
     }, {});
 
-    // Bây giờ, ánh xạ qua dataArrayCityProvider sẽ nhanh hơn
+    // Bây giờ, ánh xạ qua dataArrayCityProvider sẽ nhanh hơn ok
     const convertDataCity = dataArrayCityProvider.map((item) => {
       return {
         ...item,
